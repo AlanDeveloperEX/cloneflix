@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react'
+import GlobalStyle from './globalStyles'
+import Data from './services/tmdb'
+import { ListRow, FeaturedMovie } from "./components";
 
-function App() {
+const App = () => {
+
+  const [movieList, setMovieList] = useState([])
+  const [featuredData, setFeaturedData] = useState([])
+
+  useEffect(() => {
+    const loadData = async () => {
+      // ALL DATA 
+      let list = await Data.getHomeList()
+      setMovieList(list)
+
+      //SET FEATURED
+      let featured = list.filter(item => item.slug === 'original')
+      let IndexChosen = Math.floor(Math.random() * (featured[0].items.results.length - 1))
+      let chosen = featured[0].items.results[IndexChosen]
+      
+      let chosenInfo = await Data.getFeaturedInfo(chosen.id, 'tv')
+      setFeaturedData(chosenInfo)
+
+    }
+
+    loadData()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <GlobalStyle />
+      <FeaturedMovie item={featuredData} />
+
+      {movieList.map((item, key) =>
+
+        <ListRow key={key} items={item.items} title={item.title} />
+
+      )}
+    </>
+  )
 }
 
-export default App;
+export default App
