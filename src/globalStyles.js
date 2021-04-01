@@ -10,13 +10,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    --background: #222222;
+    --background: #111;
     --s_back: #f5f1e5;
 
     --main_color: #f74b3d;
 
     --white: #fff;
     --black: #000;
+    --green: #46d369;
     --yellow: #f9c13d;
     --gray: #b6b6b6;
     --dark_gray: #222222;
@@ -80,6 +81,15 @@ export const Container = styled.div`
   @media screen and (max-width: 991px) {
     padding: 30px 20px;
   }
+`;
+
+export const ALink = styled.a`
+  background: var(--white);
+  color: var(--black);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export default GlobalStyle

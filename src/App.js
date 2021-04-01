@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import GlobalStyle from './globalStyles'
 import Data from './services/tmdb'
-import { ListRow, FeaturedMovie } from "./components";
+import { ListRow, Featured } from "./components"
 
 const App = () => {
 
   const [movieList, setMovieList] = useState([])
-  const [featuredData, setFeaturedData] = useState([])
+  const [featuredData, setFeaturedData] = useState(null)
 
   useEffect(() => {
     const loadData = async () => {
@@ -30,7 +30,9 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      <FeaturedMovie item={featuredData} />
+      {featuredData &&
+        <Featured item={featuredData} />
+      }
 
       {movieList.map((item, key) =>
 
