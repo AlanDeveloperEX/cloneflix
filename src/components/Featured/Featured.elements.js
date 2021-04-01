@@ -69,6 +69,13 @@ export const FeaturedButtons = styled.div`
   justify-content: flex-start;
   align-items: center;
 
+  margin-bottom: 1rem;
+
+  a {
+    margin-right: .5rem;
+    font-weight: 600;
+  }
+
 `;
 
 export const FeaturedGens = styled.div`

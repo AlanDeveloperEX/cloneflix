@@ -35,7 +35,7 @@ const Featured = ({item}) => {
           </FeaturedDescription>
 
           <FeaturedButtons>
-            <ALink href={`watch/${item.id}`}> <FaPlay/> Watch </ALink>
+            <ALink normal href={`watch/${item.id}`}> <FaPlay/> Watch </ALink>
             <ALink href={`list/add/${item.id}`}> <FaPlus/> Add List </ALink>
           </FeaturedButtons>
 

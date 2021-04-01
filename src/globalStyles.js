@@ -19,9 +19,13 @@ const GlobalStyle = createGlobalStyle`
     --black: #000;
     --green: #46d369;
     --yellow: #f9c13d;
+
+    --light_red: #de0912;
+    --red: #ab060f;
+
+    --light_gray: #222222ad;
     --gray: #b6b6b6;
     --dark_gray: #222222;
-    --light_gray: #222222ad;
 
   }
 
@@ -73,7 +77,6 @@ export const Container = styled.div`
   z-index: 1;
 
   width: 100%;
-  max-width: 1300px;
 
   margin: 0 auto;
   padding: 50px 50px;
@@ -84,12 +87,31 @@ export const Container = styled.div`
 `;
 
 export const ALink = styled.a`
-  background: var(--white);
-  color: var(--black);
+  background: ${({normal}) => (normal ? 'var(--white)' : 'var(--dark_gray)')};
+  color: ${({normal}) => (normal ? 'var(--black)' : 'var(--white)')};
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
+  font-size: 1.1rem;
+  font-family: 600;
+
+  padding: .9rem 2rem;
+
+  border-radius: 4px;
+
+  transition: all .2s ease;
+
+  opacity: 1;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  svg {
+    margin-right: .5rem;
+  }
 `;
 
 export default GlobalStyle

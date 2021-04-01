@@ -1,45 +1,22 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import GlobalStyle from './globalStyles'
-import Data from './services/tmdb'
-import { ListRow, Featured } from "./components"
+import { Navbar } from "./components"
+import { Home } from "./pages"
 
 const App = () => {
 
-  const [movieList, setMovieList] = useState([])
-  const [featuredData, setFeaturedData] = useState(null)
-
-  useEffect(() => {
-    const loadData = async () => {
-      // ALL DATA 
-      let list = await Data.getHomeList()
-      setMovieList(list)
-
-      //SET FEATURED
-      let featured = list.filter(item => item.slug === 'original')
-      let IndexChosen = Math.floor(Math.random() * (featured[0].items.results.length - 1))
-      let chosen = featured[0].items.results[IndexChosen]
-      
-      let chosenInfo = await Data.getFeaturedInfo(chosen.id, 'tv')
-      setFeaturedData(chosenInfo)
-
-    }
-
-    loadData()
-  }, [])
-
   return (
-    <>
+    <Router>
+
       <GlobalStyle />
-      {featuredData &&
-        <Featured item={featuredData} />
-      }
+      <Navbar/>
 
-      {movieList.map((item, key) =>
+      <Switch>
+        <Route path="/" exact component={Home} />
+      </Switch>
 
-        <ListRow key={key} items={item.items} title={item.title} />
-
-      )}
-    </>
+    </Router>
   )
 }
 

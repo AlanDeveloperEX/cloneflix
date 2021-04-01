@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const ListContainer = styled.section`
-  margin: 2rem 0;
+  margin: 2rem 0 2rem 0;
   padding: 0 0 0 1rem;
 
   h2 {
