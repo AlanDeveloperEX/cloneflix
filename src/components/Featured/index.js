@@ -5,10 +5,14 @@ import { FaPlay, FaPlus } from 'react-icons/fa'
 
 const Featured = ({item}) => {
 
-  let fullData = parseInt(item.first_air_date)
-  let firstDate = new Date(fullData)
-  let genres = []
+  let firstDate = new Date(item.first_air_date)
 
+  let description = item.overview
+  if (description.length > 300) {
+    description = description.substring(0, 300) + '...'
+  }
+
+  let genres = []
   for (let i in item.genres) {
     
     genres.push( item.genres[i].name )
@@ -31,7 +35,7 @@ const Featured = ({item}) => {
           </FeaturedInfo>
 
           <FeaturedDescription>
-            {item.overview}
+            {description}
           </FeaturedDescription>
 
           <FeaturedButtons>

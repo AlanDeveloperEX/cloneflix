@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Data from '../../services/tmdb'
 import { ListRow, Featured } from "../../components"
-import { NegativeTop } from './Home.elements'
+import { NegativeTop, Loading } from './Home.elements'
 
 const Home = () => {
 
@@ -39,6 +39,12 @@ const Home = () => {
           <ListRow key={key} items={item.items} title={item.title} />  
         )}
       </NegativeTop>
+      
+      {movieList.length <= 0 || featuredData <= 0 &&
+        <Loading>
+          <img src="./loading.gif" alt="loading"/>
+        </Loading>
+      }
       
     </>
   )

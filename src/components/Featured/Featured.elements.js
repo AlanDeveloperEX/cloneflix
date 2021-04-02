@@ -36,6 +36,19 @@ export const FeaturedDegradeHorizontal = styled.div`
   width: inherit;
   height: inherit;
   background: linear-gradient(to right, var(--background) 30%, transparent 70%);
+
+  @media (max-width: 980px) {
+
+    background: linear-gradient(to right, var(--background) 35%, transparent 85%);
+
+  }
+
+  @media (max-width: 600px) {
+
+    background: linear-gradient(to right, var(--background) 35%, transparent 100%);
+
+  }
+
 `;
 
 export const FeaturedInfo = styled.div`
@@ -57,9 +70,17 @@ export const FeaturedInfo = styled.div`
 
 export const FeaturedDescription = styled.div`
 
-  margin: 1rem 0;
+  margin: 1.2rem 0;
   color: var(--gray);
   max-width: 40%;
+
+  @media (max-width: 980px) {
+    max-width: 60%;
+  }
+
+  @media (max-width: 600px) {
+    max-width: 80%;
+  }
 
 `;
 
@@ -72,7 +93,7 @@ export const FeaturedButtons = styled.div`
   margin-bottom: 1rem;
 
   a {
-    margin-right: .5rem;
+    margin-right: 1rem;
     font-weight: 600;
   }
 

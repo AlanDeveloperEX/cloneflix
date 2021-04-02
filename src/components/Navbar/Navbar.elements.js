@@ -19,7 +19,7 @@ export const Nav = styled.nav`
   top: 0;
   z-index: 999;
 
-  transition: background-image .2s ease;
+  transition: all .2s ease;
 
   @media screen and (max-width: 991px) {
     height: 91px;
